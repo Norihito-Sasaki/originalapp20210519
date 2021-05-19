@@ -7,4 +7,8 @@ class User < ApplicationRecord
   has_secure_password
   
   has_many :articles
+  has_many :interpretations
+  has_many :favorites
+  has_many :fav_interpretation, through: :favorites, source: :interpretation 
+  has_many :simplify, through: :interpretations, source: :articles
 end

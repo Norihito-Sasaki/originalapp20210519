@@ -3,4 +3,7 @@ Rails.application.routes.draw do
   root to: 'articles#index'
   
   resources :articles
+  
+  get "signup", to: 'users#new'
+  resources :users, only: [:show, :create]
 end

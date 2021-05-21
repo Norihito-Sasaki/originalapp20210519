@@ -1,0 +1,10 @@
+<ul class="list-unstyled">
+  <% articles.each do |article| %>
+    <div class="card" >
+      <div class="card-body">
+        <h5 class="card-title"><%= link_to article.title, article_path(article) %> <span class="text-muted"> posted at <%= article.created_at%> by <%= link_to article.user.name, user_path(article.user) %></span></h5>
+        <p class="card-text"><%=article.theme%></p>
+      </div>
+    </div>
+  <% end %>
+</ul>

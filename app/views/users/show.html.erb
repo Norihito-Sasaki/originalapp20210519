@@ -1,7 +1,16 @@
 <div>
   <ul class="nav nav-tabs">
-    <li class="nav-item"><a href="#" class="nav-link active">プロフィール</a></li>
-    <li class="nav-item"><a href="#" class="nav-link">投稿記事</a></li>
-    <li class="nav-item"><a href="#" class="nav-link">投稿した回答</a></li>
+    <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link active">プロフィール</a></li>
+    <li class="nav-item"><a href="<%= articles_user_path(@user) %>" class="nav-link ">投稿記事</a></li>
+    <li class="nav-item"><a href="<%= interpretations_user_path(@user) %>" class="nav-link">投稿した回答</a></li>
   </ul>
+  <div>
+    
+    <h4><%= @user.name %>さんのページ</h4>
+    
+    <h5>プロフィール</h5>
+    <div>
+      <%= @user.profile %>
+    </div>
+  </div>
 </div>

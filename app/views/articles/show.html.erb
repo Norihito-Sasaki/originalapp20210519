@@ -4,3 +4,6 @@
     <p class="card-text"><%=@article.theme%></p>
   </div>
 </div>
+<div>
+  <%= render 'interpretations/interpretations', interpretations: @article.interpretations.page(params[:page]).per(2) %>
+</div>

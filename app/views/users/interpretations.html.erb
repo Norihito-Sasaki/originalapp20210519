@@ -1,0 +1,24 @@
+<div>
+  <ul class="nav nav-tabs">
+    <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link">プロフィール</a></li>
+    <li class="nav-item"><a href="<%= articles_user_path(@user) %>" class="nav-link">投稿記事</a></li>
+    <li class="nav-item"><a href="<%= interpretations_user_path(@user) %>" class="nav-link active">投稿した回答</a></li>
+  </ul>
+  <div>
+    <ul class="list-unstyled">
+      <% @interpretations.each do |interpretation| %>
+        <li class -"media mb-3">
+          <div class="media-body">
+            <div>
+              <%= link_to interpretation.article.title, article_path(interpretation.article) %> 
+            </div>
+            <div>
+              <p><%= interpretation.content %></p>
+            </div>
+            </div>
+        </li>
+      <% end %>
+      <%= paginate @interpretations %>
+    </ul>
+  </div>
+</div>

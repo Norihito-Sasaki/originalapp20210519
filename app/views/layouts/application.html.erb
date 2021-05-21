@@ -6,6 +6,8 @@
     <title>Interpretations</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -16,6 +18,12 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'layouts/navbar' %>
+    
+    <div class= "container">
+      <%= render 'layouts/flash_messages' %>
+
+      <%= yield %>
+    </div>
   </body>
 </html>

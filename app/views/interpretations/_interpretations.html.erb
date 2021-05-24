@@ -1,15 +1,9 @@
 <ul class="list-unstyled">
   <% interpretations.each do |interpretation| %>
-    <li class -"media mb-3">
-      <div class="media-body">
-        <div>
-          <%= link_to interpretation.user.name, user_path(interpretation.user) %> 
-        </div>
-        <div>
-          <p><%= interpretation.content %></p>
-        </div>
+    <div class="card" >
+      <div class="card-body">
+        <p class="card-text"><%=interpretation.content%></p>
       </div>
-    </li>
+    </div>
   <% end %>
-  <%= paginate interpretations %>
 </ul>

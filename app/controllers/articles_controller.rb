@@ -24,9 +24,19 @@ class ArticlesController < ApplicationController
   end
 
   def edit
+    @article = Article.find(params[:id])
   end
 
   def update
+    @article = Article.find(params[:id])
+    
+    if @article.update(article_params)
+      flash[:success] = '記事は正常に更新されました'
+      redirect_to @article
+    else
+      flash.now[:danger] = '記事は更新されませんでした。'
+      render :edit
+    end
   end
 
   def destroy

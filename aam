@@ -1,0 +1,16 @@
+
+[1mFrom:[0m /home/ubuntu/environment/interpretations/app/controllers/articles_controller.rb:18 ArticlesController#create:
+
+    [1;34m14[0m: [32mdef[0m [1;34mcreate[0m
+    [1;34m15[0m:   @article = current_user.articles.build(article_params)
+    [1;34m16[0m:   
+    [1;34m17[0m:   binding.pry
+ => [1;34m18[0m:   [32mif[0m @article.save
+    [1;34m19[0m:     flash[[33m:success[0m] = [31m[1;31m'[0m[31m投稿しました。[1;31m'[0m[31m[0m
+    [1;34m20[0m:     redirect_to root_url
+    [1;34m21[0m:   [32melse[0m
+    [1;34m22[0m:     flash.now[[33m:danger[0m] = [31m[1;31m'[0m[31mメッセージの投稿に失敗しました。[1;31m'[0m[31m[0m
+    [1;34m23[0m:     render root_path
+    [1;34m24[0m:   [32mend[0m
+    [1;34m25[0m: [32mend[0m
+

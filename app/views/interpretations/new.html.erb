@@ -1,2 +1,15 @@
-<h1>Interpretations#new</h1>
-<p>Find me in app/views/interpretations/new.html.erb</p>
+<div class = 'row'>
+  <div>
+    
+    <%= form_with(model: @interpretation, local:true, url:article_interpretations_path) do |f| %>
+      
+      <div class="form-group">
+        <%= f.label :content, '回答'%>
+        <%= f.text_area :content, class: 'form-control' %>
+      </div>
+      
+      <%= f.submit '回答する', class: 'btn btn-primary btn-block' %>
+    <%end%>
+    <%= link_to "キャンセル", root_path, class: 'btn btn-secondary btn-block'%>
+  </div>
+</div>

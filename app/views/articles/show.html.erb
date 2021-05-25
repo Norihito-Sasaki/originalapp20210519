@@ -5,8 +5,9 @@
   </div>
 </div>
 <div>
-  <%= render 'interpretations/interpretations', interpretations: @article.interpretations.page(params[:page]).per(2) %>
+  <%= render 'interpretations/interpretations', interpretations: @article.interpretations.page(params[:page]).per(3) %>
 </div>
+
 <div>
-  <%= link_to "新規回答の作成", new_article_interpretation_path(@article) %>
+  <%= link_to "新規回答の作成", new_article_interpretation_path(@article)%>
 </div>

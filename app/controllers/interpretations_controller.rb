@@ -1,5 +1,5 @@
 class InterpretationsController < ApplicationController
-  
+  before_action :correct_user, only: [:destroy]
   
   def new
     @article = Article.find(params[:article_id])
@@ -15,14 +15,14 @@ class InterpretationsController < ApplicationController
       flash[:success] = '投稿しました。'
       redirect_to @article
     else
-      flash.now[:danger] = 'メッセージの投稿に失敗しました。'
+      flash.now[:danger] = '回答の投稿に失敗しました。'
       render :new
     end
   end
 
   def edit
-    @article = Article.find(params[:article_id])
-    @interpretation = Interpretation.find(params[:id])
+    @article = Article.find(params[:id])
+    @interpretation = Interpretation.find(params[:article_id])
   end
 
   def update
@@ -39,14 +39,23 @@ class InterpretationsController < ApplicationController
   end
 
   def destroy
+    @article = Article.find(params[:id])
     @interpretation.destroy
     flash[:success] = '記事を削除しました。'
-    redirect_back(fallback_location: root_path)
+    redirect_to @article
   end
   
    private
    
    def interpretation_params
      params.require(:interpretation).permit(:content)
-   end 
+   end
+   
+   def correct_user
+    @interpretation = current_user.interpretations.find_by(id: params[:article_id])
+    unless @interpretation
+      redirect_to root_url
+    end 
+  end 
+  
 end

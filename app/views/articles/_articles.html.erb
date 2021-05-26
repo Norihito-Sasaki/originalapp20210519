@@ -5,6 +5,9 @@
         <h5 class="card-title"><%= link_to article.title, article_path(article) %> <span class="text-muted"> posted at <%= article.created_at%> by <%= link_to article.user.name, user_path(article.user) %></span></h5>
         <p class="card-text"><%=article.theme%></p>
       </div>
+      <% if current_user == article.user %>
+        <%= link_to "記事を削除", article, method: :delete, data: { confirm: "削除しますか？"} %>
+      <% end %>
     </div>
   <% end %>
 </ul>

@@ -1,4 +1,7 @@
 class ArticlesController < ApplicationController
+  before_action :require_user_logged_in, only: [:new, :edit]
+  before_action :correct_user, only: [:destroy]
+  
   def index
     @articles = Article.all.order(created_at: :desc).page(params[:page]).per(20)
   end
@@ -41,11 +44,21 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
+    @article.destroy
+    flash[:success] = 'メッセージを削除しました。'
+    redirect_to root_url
   end
   
   private
   
   def article_params
     params.require(:article).permit(:title,:theme)
+  end 
+  
+  def correct_user
+    @article = current_user.articles.find_by(id: params[:id])
+    unless @article
+      redirect_to root_url
+    end 
   end 
 end

@@ -11,4 +11,19 @@ class User < ApplicationRecord
   has_many :favorites
   has_many :fav_interpretation, through: :favorites, source: :interpretation 
   has_many :simplify, through: :interpretations, source: :articles
+
+
+  def favorite(interpretation)
+    self.favorites.find_or_create_by(interpretation_id: interpretation.id)
+  end 
+
+  def unfavorite(interpretation)
+    favorite = self.favorites.find_by(interpretation_id: interpretation.id)
+    favorite.destroy if favorite
+  end 
+  
+  def favorite?(interpretation)
+    self.fav_interpretation.include?(interpretation)
+  end
+  
 end

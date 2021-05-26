@@ -3,6 +3,8 @@
     <div class="card" >
       <div class="card-body">
         <p class="card-text"><%=interpretation.content%></p>
+        <%= link_to 'edit', edit_article_interpretation_path(interpretation) %>
+        <%= render 'favorites/favorite_button', interpretation: interpretation %>
       </div>
     </div>
   <% end %>

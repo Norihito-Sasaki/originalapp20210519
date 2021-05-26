@@ -1,7 +1,7 @@
 <div class = 'row'>
   <div>
     
-    <%= form_with(model: @interpretation, local:true, url:article_interpretations_path) do |f| %>
+    <%= form_with(model: [@article,@interpretation], local:true) do |f| %>
       
       <div class="form-group">
         <%= f.label :content, '回答'%>

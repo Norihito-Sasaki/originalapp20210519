@@ -12,5 +12,11 @@
     <div>
       <%= @user.profile %>
     </div>
+    
+    <div>
+      <% if @user == current_user %>
+        <%= link_to 'プロフィールを編集する', edit_user_path(@user) %>
+      <% end %>
+    </div>
   </div>
 </div>

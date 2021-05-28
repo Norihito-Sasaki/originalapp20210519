@@ -1,6 +1,6 @@
 <% if current_user.favorite?(interpretation) %>
   <%= form_with(model: current_user.favorites.find_by(interpretation_id: interpretation.id),local: true, method: :delete) do |f| %>
-    <%= hidden_field_tag :interpretation_id, interpretation.id%>
+    <%= hidden_field_tag :interpretation_id, interpretation.id %>
     <%= f.submit 'Unfavorite', class: 'btn btn-danger btn-sm' %>
   <% end %>
 <% else %>

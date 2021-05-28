@@ -18,7 +18,7 @@ class User < ApplicationRecord
   end 
 
   def unfavorite(interpretation)
-    favorite = self.favorites.find_by(interpretation_id: interpretation.id)
+    favorite = self.favorites.find_by(interpretation_id: interpretation)
     favorite.destroy if favorite
   end 
   

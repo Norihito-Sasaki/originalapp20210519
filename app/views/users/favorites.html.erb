@@ -1,0 +1,25 @@
+<div>
+  <ul class="nav nav-tabs">
+    <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link">プロフィール</a></li>
+    <li class="nav-item"><a href="<%= articles_user_path(@user) %>" class="nav-link">投稿記事</a></li>
+    <li class="nav-item"><a href="<%= interpretations_user_path(@user) %>" class="nav-link">投稿した回答</a></li>
+    <li class="nav-item"><a href="<%= favorites_user_path(@user) %>" class="nav-link active">お気に入り回答</a></li>
+  </ul>
+  <div>
+    <ul class="list-unstyled">
+      <% @favorites.each do |favorite| %>
+        <li class -"media mb-3">
+          <div class="media-body">
+            <div>
+              <%= link_to favorite.interpretation.article.title, article_path(favorite.interpretation.article) %> 
+            </div>
+            <div>
+              <p><%= favorite.interpretation.content %></p>
+            </div>
+          </div>
+        </li>
+      <% end %>
+      <%= paginate @favorites %>
+    </ul>
+  </div>
+</div>

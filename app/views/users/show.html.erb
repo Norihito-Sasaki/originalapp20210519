@@ -9,6 +9,13 @@
     <h4><%= @user.name %>さんのページ</h4>
     
     <h5>プロフィール</h5>
+    <div class="rounded-circle">
+      <% if @user.image? %>
+      <%= image_tag @user.image.url(:thumb), class:"rounded-circle" %>
+      <% else %>
+         <%= image_tag "default-avatar.png", alt: "user-icon", size: "100", class: "rounded-circle" %>
+      <% end %>
+    </div>
     <div>
       <%= @user.profile %>
     </div>

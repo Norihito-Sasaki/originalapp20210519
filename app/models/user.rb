@@ -26,4 +26,6 @@ class User < ApplicationRecord
     self.fav_interpretation.include?(interpretation)
   end
   
+  mount_uploader :image, ImageUploader
+  
 end

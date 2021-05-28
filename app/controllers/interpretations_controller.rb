@@ -45,13 +45,13 @@ class InterpretationsController < ApplicationController
     redirect_to @article
   end
   
-   private
+  private
    
-   def interpretation_params
+  def interpretation_params
      params.require(:interpretation).permit(:content)
-   end
+  end
    
-   def correct_user
+  def correct_user
     @interpretation = current_user.interpretations.find_by(id: params[:article_id])
     unless @interpretation
       redirect_to root_url

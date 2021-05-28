@@ -31,6 +31,16 @@
         <%= f.label :profile, 'profile' %>
         <%= f.text_area :profile, class: 'form-control' %>
       </div>
+      
+      <% if @user.image? %>
+        <%= image_tag @user.image.url(:thumb), class: "rounded-circle" %>
+      <% else %>
+         <%= image_tag "default-avatar.png", alt: "user-icon", size: "100", class: "rounded-circle" %>
+      <% end %>
+      
+      <button type="button" class="btn btn-outline-secondary rounded-pill">
+         <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png', class: "image-select-btn" %>
+      </button>
 
       <%= f.submit '更新', class: 'btn btn-primary btn-block' %>
     <% end %>

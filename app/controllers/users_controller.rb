@@ -31,6 +31,11 @@ class UsersController < ApplicationController
     @interpretations = @user.interpretations.order(id: :desc).page(params[:page])
   end
   
+  def favorites
+    @user = User.find(params[:id])
+    @favorites = @user.favorites.order(id: :desc).page(params[:page])
+  end
+  
   def edit
     @user = User.find(params[:id])
   end
@@ -53,7 +58,7 @@ class UsersController < ApplicationController
   private
   
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation,:profile)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation,:profile, :image)
   end
 
 end

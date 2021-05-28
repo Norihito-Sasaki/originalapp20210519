@@ -9,7 +9,7 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    interpretation = Interpretation.find(params[:interpretation_id])
+    interpretation = Interpretation.find(params[:interpretation_id]),
     current_user.unfavorite(interpretation)
     flash[:success] = 'お気に入りから削除しました。'
     redirect_to root_url

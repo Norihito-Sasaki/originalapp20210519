@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
   before_action :require_user_logged_in, only: [:new, :edit]
-  before_action :correct_user, only: [:destroy]
+  before_action :correct_user, only: [:destroy,:edit]
   
   def index
     @articles = Article.all.order(created_at: :desc).page(params[:page]).per(20)
@@ -23,7 +23,7 @@ class ArticlesController < ApplicationController
       redirect_to root_url
     else
       flash.now[:danger] = 'メッセージの投稿に失敗しました。'
-      render root_path
+      render :new 
     end
   end
 

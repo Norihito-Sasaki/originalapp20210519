@@ -6,6 +6,7 @@
         <p class="card-text"><%=article.theme%></p>
       </div>
       <% if current_user == article.user %>
+        <%= link_to "記事の編集", edit_article_path(article) %>
         <%= link_to "記事を削除", article, method: :delete, data: { confirm: "削除しますか？"} %>
       <% end %>
     </div>

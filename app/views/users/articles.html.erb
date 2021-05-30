@@ -3,7 +3,7 @@
     <li class="nav-item"><a href="<%= user_path(@user) %>" class="nav-link">プロフィール</a></li>
     <li class="nav-item"><a href="<%= articles_user_path(@user) %>" class="nav-link active">投稿記事</a></li>
     <li class="nav-item"><a href="<%= interpretations_user_path(@user) %>" class="nav-link">投稿した回答</a></li>
-    <% if @user = current_user %>
+    <% if @user == current_user %>
       <li class="nav-item"><a href="<%= favorites_user_path(@user) %>" class="nav-link">お気に入り回答</a></li>
     <% end %>
   </ul>

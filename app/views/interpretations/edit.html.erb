@@ -2,6 +2,16 @@
   <div>
     
     <%= form_with(model: [@article,@interpretation], local:true) do |f| %>
+    
+      <% if @interpretation.errors.any? %>
+        <div id="error_explanation">
+          <ul>
+            <% @interpretation.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
       
       <div class="form-group">
         <%= f.label :content, '回答'%>

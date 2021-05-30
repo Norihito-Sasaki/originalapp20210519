@@ -6,24 +6,33 @@
   <div class="col-sm-6 offset-sm-3">
 
     <%= form_with(model: @user, local: true) do |f| %>
+      <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
       
       <div class="form-group">
-        <%= f.label :name, 'Name' %>
+        <%= f.label :name, 'Name(必須)' %>
         <%= f.text_field :name, class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :email, 'Email' %>
+        <%= f.label :email, 'Email(必須)' %>
         <%= f.email_field :email, class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :password, 'Password' %>
+        <%= f.label :password, 'Password(必須)' %>
         <%= f.password_field :password, class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :password_confirmation, 'Confirmation' %>
+        <%= f.label :password_confirmation, 'Confirmation(必須)' %>
         <%= f.password_field :password_confirmation, class: 'form-control' %>
       </div>
       

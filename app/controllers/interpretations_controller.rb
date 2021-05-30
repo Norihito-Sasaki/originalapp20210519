@@ -1,5 +1,6 @@
 class InterpretationsController < ApplicationController
-  before_action :correct_user, only: [:destroy]
+  before_action :require_user_logged_in, only: [:new, :edit]
+  before_action :correct_user, only: [:destroy, :edit]
   
   def new
     @article = Article.find(params[:article_id])

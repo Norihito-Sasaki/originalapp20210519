@@ -9,8 +9,10 @@
 </div>
 
 <div>
-  <%= link_to "新規回答の作成", new_article_interpretation_path(@article)%>
-  <% if current_user == @article.user %>
-    <%= link_to "記事を削除",@article, method: :delete, data: { confirm: "削除しますか？"} %>
+  <% if logged_in? %>
+    <%= link_to "新規回答の作成", new_article_interpretation_path(@article)%>
+    <% if current_user == @article.user %>
+      <%= link_to "記事を削除",@article, method: :delete, data: { confirm: "削除しますか？"} %>
+    <% end %>
   <% end %>
 </div>

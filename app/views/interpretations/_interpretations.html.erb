@@ -3,11 +3,13 @@
     <div class="card" >
       <div class="card-body">
         <p class="card-text"><%=interpretation.content%></p>
-        <%= link_to 'edit', edit_article_interpretation_path(interpretation) %>
-        <%= render 'favorites/favorite_button', interpretation: interpretation %>
-        <% if current_user == interpretation.user %>
-          <%= link_to "削除", article_interpretation_path(interpretation), method: :delete, data: { confirm: "削除しますか?" }, class: 'btn btn-danger btn-sm' %>
-        <% end %>
+        <% if logged_in? %>
+          <%= link_to 'edit', edit_article_interpretation_path(interpretation) %>
+          <%= render 'favorites/favorite_button', interpretation: interpretation %>
+          <% if current_user == interpretation.user %>
+            <%= link_to "削除", article_interpretation_path(interpretation), method: :delete, data: { confirm: "削除しますか?" }, class: 'btn btn-danger btn-sm' %>
+          <% end %>
+        <% end %>>
       </div>
     </div>
   <% end %>
